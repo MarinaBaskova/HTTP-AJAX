@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 const Friend = (props) => {
-	console.log(props);
 	return (
 		<div className="friendWrapper">
 			<h3>Name: {props.friend.name}</h3>

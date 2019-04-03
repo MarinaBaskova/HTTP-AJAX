@@ -22,10 +22,14 @@ class App extends Component {
 			});
 	}
 
+	addNewFriend = (name, age, email) => {
+		console.log(name, age, email);
+	};
+
 	render() {
 		return (
 			<div className="App">
-				<FriendsList friends={this.state.friends} />
+				<FriendsList friends={this.state.friends} addNewFriend={this.addNewFriend} />
 			</div>
 		);
 	}
