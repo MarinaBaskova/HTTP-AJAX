@@ -61,7 +61,7 @@ class FriendForm extends Component {
 						onChange={this.handleChanges}
 						required
 					/>
-					<button>Update Friend</button>
+					<button>Add Friend</button>
 				</form>
 			</div>
 		);
