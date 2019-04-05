@@ -1,47 +1,39 @@
 import React, { Component } from 'react';
 
-class FriendForm extends Component {
+class UpdateForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			newFriend: {
-				name: '',
-				age: '',
-				email: ''
-			}
+			curentFriend: this.props.activeFriend
 		};
 	}
 
 	handleChanges = (e) => {
-		this.setState({
-			newFriend: {
-				...this.state.newFriend,
+		e.persist();
+		this.setState((prevState) => ({
+			curentFriend: {
+				...prevState.curentFriend,
 				[e.target.name]: e.target.value
 			}
-		});
+		}));
 	};
 
-	handleNewFriendSubmit = (e) => {
+	submitUpdateFriend = (e) => {
 		e.preventDefault();
-		this.props.addNewFriend(this.state.newFriend);
-		this.setState({
-			newFriend: {
-				name: '',
-				age: '',
-				email: ''
-			}
-		});
+		this.props.updateFriend(this.state.curentFriend);
+		console.log(this.state.curentFriend);
 	};
 
 	render() {
 		return (
-			<div className="formWrapper">
-				<form onSubmit={this.handleNewFriendSubmit}>
+			<div>
+				<h2>Update Friend</h2>
+				<form onSubmit={this.submitUpdateFriend}>
 					<input
 						type="text"
 						name="name"
 						placeholder="name"
-						value={this.state.newFriend.name}
+						value={this.state.curentFriend.name}
 						onChange={this.handleChanges}
 						required
 					/>
@@ -49,15 +41,15 @@ class FriendForm extends Component {
 						type="number"
 						name="age"
 						placeholder="age"
-						value={this.state.newFriend.age}
+						value={this.state.curentFriend.age}
 						onChange={this.handleChanges}
 						required
 					/>
 					<input
 						type="email"
 						name="email"
-						plaƒceholder="email"
-						value={this.state.newFriend.email}
+						placeholder="email"
+						value={this.state.curentFriend.email}
 						onChange={this.handleChanges}
 						required
 					/>
@@ -67,5 +59,4 @@ class FriendForm extends Component {
 		);
 	}
 }
-
-export default FriendForm;
+export default UpdateForm;
